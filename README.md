@@ -64,19 +64,19 @@ las herramientas de ROS: RVIZ o Gazebo, se ejecuten correctamente. Para ello,
 ejecuta el siguiente comando en la terminal:
 ```xhost +local:```
 
-Lo que da como resultado:
 Este comando permite que las conexiones locales (es decir, conexiones desde el
 mismo ordenador) se comunique con el servidor X, que es el sistema de ventanas utilizado en entornos gráficos de Ubuntu. Este paso es fundamental para poder
 visualizar la interfaz gráfica desde el contenedor.
 
 ### Construcción del Contenedor Docker
 Con las dependencias necesarias instaladas y la interfaz gráfica compartida, el
-siguiente paso es construir el contenedor Docker utilizando el archivo Dockerfile.
+siguiente paso es construir el contenedor Docker que se puede obtener en el siguiente enlace:
+
+https://drive.google.com/file/d/1G_lPhHabvC23i-ewcNKLahq5ox27L3Ht/view
+
 Este archivo contiene las instrucciones necesarias para instalar automáticamente
 todas las dependencias, repositorios y herramientas requeridas para el desarrollo de
-esta práctica. Para construir el contenedor, sigue estos pasos:
-Navega hasta el directorio donde se encuentra el archivo Dockerfile. Ejecuta el
-siguiente comando en la terminal:
+esta práctica. Ejecuta el siguiente comando en la terminal:
 ```
 docker load -i kinova-phantom_container_v2.tar
 ```
