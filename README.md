@@ -77,7 +77,8 @@ todas las dependencias, repositorios y herramientas requeridas para el desarroll
 esta práctica. Para construir el contenedor, sigue estos pasos:
 Navega hasta el directorio donde se encuentra el archivo Dockerfile. Ejecuta el
 siguiente comando en la terminal:
-```docker load -i kinova-phantom_container_v2.tar
+```
+docker load -i kinova-phantom_container_v2.tar
 ```
 
 ### Corriendo el contenedor
