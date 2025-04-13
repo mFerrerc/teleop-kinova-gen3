@@ -36,26 +36,30 @@ de la tarjeta gráfica están instalados correctamente, se recomienda instalar N
 Docker.
 
 - Install docker-nvidia sources
+```
 distribution=$(. /etc/os-release;echo $ID$VERSION_ID) && curl -s -L
 https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add - && curl -s -L
 https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee
 /etc/apt/sources.list.d/nvidia-docker.list
-sudo apt-get update
 
+sudo apt-get update
+```
 - Install nvidia-docker2
+```
 sudo apt-get install -y nvidia-docker2
 sudo systemctl restart Docker
-
+```
 - Test docker with CUDA
+```
 sudo docker run --gpus all nvidia/cuda:11.5.2-base-ubuntu20.04 nvidia-smi
-
+```
 ### Ejecutar contenedor
 
 Una vez instalados los requisitos previos de Docker, es necesario compartir la
 interfaz gráfica con el contenedor para permitir que las aplicaciones gráficas, como
 las herramientas de ROS: RVIZ o Gazebo, se ejecuten correctamente. Para ello,
 ejecuta el siguiente comando en la terminal:
-´´´xhost +local:´´´
+```xhost +local:```
 
 Lo que da como resultado:
 Este comando permite que las conexiones locales (es decir, conexiones desde el
@@ -70,13 +74,13 @@ todas las dependencias, repositorios y herramientas requeridas para el desarroll
 esta práctica. Para construir el contenedor, sigue estos pasos:
 Navega hasta el directorio donde se encuentra el archivo Dockerfile. Ejecuta el
 siguiente comando en la terminal:
-´´´sudo docker build -t kinova-phanthom .´´´
+```sudo docker build -t kinova-phanthom .```
 
 ### Corriendo el contenedor
 Tras identificar el puerto (para este ejemplo el resultado ha sido ttyACM0) se debe
 lanzar el contenedor. Para ello se ejecuta el comando necesario para entrar al
 contenedor lanzando el siguiente comando:
-´´´
+```
 sudo docker run \
 --shm-size=1g \
 --privileged \
@@ -92,34 +96,34 @@ sudo docker run \
 --cpuset-cpus=0-3 \
 -v /home/epvs/:/home/kinova-phanthom/catkin_ws/teleop \
 kinova-phanthom
-´´´
+```
 Cada uno de los elementos puestos al lanzar el contenedor son esenciales para
 poder desarrollar esta práctica. Se explica brevemente que es cada uno de estos
 elementos:
 
 ### Abrir terminales en el contenedor
-´´´
+```
 sudo docker exec -it kinova-phanthom_container /bin/bash
-´´´
+```
 
 ### Ejecutando los nodos del sensor Háptico
 
 Para el sensor háptico por USB:
-´´´
+```
 cd ~/catkin_ws/phanthom/ &&\
 ./start_omni_USB.sh
-´´´
+```
 
 Para el sensor háptico por LAN:
-´´´
+```
 cd ~/catkin_ws/phanthom/ &&\
 ./start_omni_LAN.sh
-´´´
+```
 
 ### Lanzar Aplicación
-´´´
+```
 cd ~/catkin_ws/kinova/
 source devel/setup.bash
 roslaunch kortex_gazebo spawn_kortex_robot.launch start_rviz:=true
 use_trajectory_controller:=false gripper:=robotiq_2f_140
-´´´
+```
