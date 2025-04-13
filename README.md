@@ -77,28 +77,23 @@ todas las dependencias, repositorios y herramientas requeridas para el desarroll
 esta práctica. Para construir el contenedor, sigue estos pasos:
 Navega hasta el directorio donde se encuentra el archivo Dockerfile. Ejecuta el
 siguiente comando en la terminal:
-```sudo docker build -t kinova-phanthom .```
+```docker load -i kinova-phantom_container_v2.tar
+```
 
 ### Corriendo el contenedor
 Tras identificar el puerto (para este ejemplo el resultado ha sido ttyACM0) se debe
 lanzar el contenedor. Para ello se ejecuta el comando necesario para entrar al
 contenedor lanzando el siguiente comando:
 ```
-sudo docker run \
---shm-size=1g \
---privileged \
---ulimit memlock=-1 \
---ulimit stack=67108864 \
---rm -it --net=host \
--e DISPLAY=:0 \
---user=root \
--v /tmp/.X11-unix:/tmp/.X11-unix:rw \
+docker run -it --name=kinova-phantom_container \
+--network host \
+-e DISPLAY=$DISPLAY \
+-v /tmp/.X11-unix:/tmp/.X11-unix \
 --device=/dev/ttyACM0:/dev/ttyACM0 \
---name kinova-phanthom_container \
---gpus all \
---cpuset-cpus=0-3 \
--v /home/epvs/:/home/kinova-phanthom/catkin_ws/teleop \
-kinova-phanthom
+--privileged \
+-v /home/epvs/ros_kortex/:/home/kinova-phantom/catkin_ws/kinova/src/ros_kortex \
+kinova-phantom_container_v2
+
 ```
 Cada uno de los elementos puestos al lanzar el contenedor son esenciales para
 poder desarrollar esta práctica. Se explica brevemente que es cada uno de estos
