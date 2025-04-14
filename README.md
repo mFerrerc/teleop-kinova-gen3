@@ -1,3 +1,5 @@
+<div align="justify">
+
 # Teleoperación de Kinova Gen3
 Este proyecto presenta una interfaz de teleoperación diseñada para controlar un brazo robótico Kinova Kortex con pinza Robotiq 2f-140, todo ello en el simulador Gazebo. Se ha incluido la capacidad de realimentación háptica mediante el dispositivo PHANTOM Omni, de modo que el operador percibe las fuerzas y límites del entorno robótico en tiempo real. Con ello, se logra una interacción más realista y segura al manipular objetos y esquivar colisiones en el espacio de trabajo.
 
@@ -126,3 +128,5 @@ source devel/setup.bash
 roslaunch kortex_gazebo spawn_kortex_robot.launch start_rviz:=true
 use_trajectory_controller:=false gripper:=robotiq_2f_140
 ```
+
+</div>
