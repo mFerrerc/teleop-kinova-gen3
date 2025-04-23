@@ -3,7 +3,10 @@
 # Teleoperación de Kinova Gen3
 Este proyecto presenta una interfaz de teleoperación diseñada para controlar un brazo robótico Kinova Kortex con pinza Robotiq 2f-140, todo ello en el simulador Gazebo. Se ha incluido la capacidad de realimentación háptica mediante el dispositivo PHANTOM Omni, de modo que el operador percibe las fuerzas y límites del entorno robótico en tiempo real. Con ello, se logra una interacción más realista y segura al manipular objetos y esquivar colisiones en el espacio de trabajo.
 
-![image](https://github.com/user-attachments/assets/1d47630d-c30c-460a-9187-67eeb6d705ad)![image](https://github.com/user-attachments/assets/48cad7a4-f44a-40e7-b150-27b9c83d09d1)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/1d47630d-c30c-460a-9187-67eeb6d705ad" />
+  <img src="https://github.com/user-attachments/assets/48cad7a4-f44a-40e7-b150-27b9c83d09d1" />
+</p>
 
 
 La conexión maestro-esclavo se basa en un acoplamiento cinemático y un escalado que alinea el pequeño espacio del Omni con el volumen de movimiento del robot en Gazebo. Además, se integran dos modos de retroalimentación de fuerza: la Caja de Fuerza, que delimita el espacio operativo, y el Pozo de Gravedad, que favorece la estabilidad de la pinza ante movimientos de precisión. Para garantizar la detección de choques, se ha implementado un sistema de colisiones que registra contactos y eventos de agarre, ofreciendo una visión clara del estado del robot en todo momento.
